@@ -38,9 +38,14 @@
                     <input type="hidden" name="popup" value="true">
                     
                     <div class="input-group">
-                        <label>Kode Voucher / Username</label>
-                        <input type="text" name="username" placeholder="Contoh: V-12345" autofocus required>
+                        <label>Kode Voucher</label>
+                        <input type="text" name="username" placeholder="Masukkan Kode Voucher" class="voucher-input" autofocus required>
                         <input type="hidden" name="password" value="">
+                    </div>
+
+                    <div class="promo-box" onclick="switchTab('buy')">
+                        <p>Belum punya kode voucher?</p>
+                        <strong>Beli disini via Online (DANA, OVO, dll)</strong>
                     </div>
 
                     <button type="submit" class="btn-primary">MASUK INTERNET</button>

@@ -95,43 +95,26 @@ export default function Portal() {
 
                     <form onSubmit={handleLogin} className="space-y-4">
                       <div className="space-y-2">
-                        <Label>Kode Voucher / Username</Label>
+                        <Label>Kode Voucher</Label>
                         <Input 
-                          placeholder="Contoh: V-123456" 
-                          className="h-12 bg-background/50 text-lg"
+                          placeholder="Masukkan Kode Voucher" 
+                          className="h-12 bg-background/50 text-lg text-center tracking-widest font-mono font-bold uppercase"
                           value={username}
                           onChange={(e) => setUsername(e.target.value)}
                         />
                       </div>
                       
-                      <div className="relative">
-                        <div className="absolute inset-0 flex items-center">
-                          <span className="w-full border-t border-muted" />
-                        </div>
-                        <div className="relative flex justify-center text-xs uppercase">
-                          <span className="bg-card px-2 text-muted-foreground">Opsional</span>
-                        </div>
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label>Password (Jika ada)</Label>
-                        <Input 
-                          type="password" 
-                          placeholder="••••••" 
-                          className="h-12 bg-background/50"
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)}
-                        />
+                      <div className="bg-muted/30 rounded-lg p-3 text-sm text-center border border-dashed border-border">
+                        <p className="text-muted-foreground mb-1">Belum punya kode voucher?</p>
+                        <p className="font-medium text-primary cursor-pointer hover:underline" onClick={() => setActiveTab("buy")}>
+                          Beli disini via E-Wallet (DANA, OVO, dll)
+                        </p>
                       </div>
 
                       <Button type="submit" className="w-full h-12 text-lg font-bold" disabled={isLoading}>
                         {isLoading ? "Memproses..." : "MASUK INTERNET"}
                       </Button>
                     </form>
-
-                    <div className="bg-primary/5 rounded-lg p-4 text-xs text-center text-muted-foreground border border-primary/10">
-                      <p>Belum punya voucher? Pindah ke menu <strong>Beli Voucher</strong></p>
-                    </div>
                   </CardContent>
                 </Card>
               </motion.div>
