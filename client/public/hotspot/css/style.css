@@ -176,6 +176,49 @@ input:focus {
     cursor: pointer;
 }
 
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.guide-box {
+    background-color: rgba(14, 165, 233, 0.1);
+    border: 1px solid rgba(14, 165, 233, 0.2);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 20px 0;
+}
+
+.guide-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.guide-steps {
+    padding-left: 20px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.security-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--primary-color);
+    background-color: rgba(16, 185, 129, 0.1);
+    padding: 6px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
 /* Packages List */
 .package-list {
     display: flex;
@@ -268,13 +311,37 @@ input:focus {
 
 .help-section {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 30px;
+    padding: 20px 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.btn-help {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: var(--card-color);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+    text-decoration: none;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-help:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.2);
 }
 
 .link-wa {
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-size: 14px;
-    display: inline-flex;
-    align-items: center;
+    /* Removed old styles to avoid conflict */
 }

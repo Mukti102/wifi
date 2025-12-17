@@ -189,6 +189,21 @@ export default function Portal() {
               </Button>
             </CardContent>
           </Card>
+
+          {/* Bantuan Admin Button */}
+          <div className="pt-8 pb-4 text-center border-t border-border/50">
+            <Button 
+              variant="outline" 
+              className="rounded-full border-primary text-primary hover:bg-primary hover:text-white font-bold px-8 py-6 h-auto text-base gap-2 shadow-lg hover:shadow-primary/20 transition-all"
+              onClick={() => window.open('https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20butuh%20bantuan%20terkait%20Hotspot.', '_blank')}
+            >
+              <Smartphone className="w-5 h-5" />
+              KLIK BANTUAN ADMIN
+            </Button>
+            <p className="text-[10px] text-muted-foreground mt-3 uppercase tracking-wider">
+              Jika mengalami kendala login atau pembayaran
+            </p>
+          </div>
         </div>
       </div>
     </Layout>
