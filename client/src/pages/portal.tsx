@@ -127,7 +127,7 @@ export default function Portal() {
                           className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold h-10 mt-2"
                           onClick={(e) => {
                             e.stopPropagation();
-                            window.location.href = 'https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20berminat%20pasang%20WiFi%20rumahan.%20Mohon%20info%20lebih%20lanjut.';
+                            window.open('https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20berminat%20pasang%20WiFi%20rumahan.%20Mohon%20info%20lebih%20lanjut.', '_blank');
                           }}
                         >
                           <Smartphone className="w-4 h-4 mr-2" />
