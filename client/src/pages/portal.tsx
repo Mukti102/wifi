@@ -116,21 +116,44 @@ export default function Portal() {
                   <div>
                     <h3 className="font-bold text-lg">{pkg.name}</h3>
                     {pkg.id === "install" ? (
-                      <p className="text-sm text-muted-foreground mt-1">
-                        Pasang WiFi pribadi di rumah Anda. Unlimited kuota.
-                      </p>
+                      <div className="mt-2 space-y-2">
+                        <p className="text-sm text-muted-foreground">
+                          Tersedia paket WiFi untuk keluarga mulai dari Rp 150.000 sebulan.
+                        </p>
+                        <p className="text-xs text-muted-foreground italic">
+                          Klik tombol di bawah untuk pendaftaran via WhatsApp (Isi Nama & Alamat).
+                        </p>
+                        <Button 
+                          className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold h-10 mt-2"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            window.location.href = 'https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20berminat%20pasang%20WiFi%20rumahan.%20Mohon%20info%20lebih%20lanjut.';
+                          }}
+                        >
+                          <Smartphone className="w-4 h-4 mr-2" />
+                          Hubungi via WhatsApp
+                        </Button>
+                      </div>
                     ) : (
                       <div className="flex items-center gap-2 text-xs text-muted-foreground mt-1">
                         <Clock className="w-3 h-3" /> {pkg.duration}
                       </div>
                     )}
                   </div>
-                  <div className="text-right">
-                    <span className="block font-bold text-xl text-primary">
-                      {pkg.price.toLocaleString("id-ID", { style: 'currency', currency: 'IDR' }).split(',')[0]}
-                    </span>
-                    {pkg.id === "install" && <span className="text-[10px] text-muted-foreground">/bulan</span>}
-                  </div>
+                  {pkg.id !== "install" && (
+                    <div className="text-right">
+                      <span className="block font-bold text-xl text-primary">
+                        {pkg.price.toLocaleString("id-ID", { style: 'currency', currency: 'IDR' }).split(',')[0]}
+                      </span>
+                    </div>
+                  )}
+                  {pkg.id === "install" && (
+                    <div className="text-right">
+                       <span className="block font-bold text-lg text-primary">
+                        Rp 150rb/bln
+                      </span>
+                    </div>
+                  )}
                 </div>
                 
                 {selectedPkg === pkg.id && (

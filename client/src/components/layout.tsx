@@ -22,17 +22,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   ? 'bg-primary/10 text-primary' 
                   : 'hover:bg-muted text-muted-foreground hover:text-foreground'
               }`}>
-                <ShoppingCart className="h-4 w-4" />
                 <span className="hidden sm:inline">Beli Voucher</span>
               </a>
             </Link>
-            <a 
-              href="/hotspot/login.html" 
-              className="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <Wifi className="h-4 w-4" />
-              <span className="hidden sm:inline">Login Hotspot</span>
-            </a>
           </nav>
         </div>
       </header>
