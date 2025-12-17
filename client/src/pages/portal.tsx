@@ -92,6 +92,18 @@ export default function Portal() {
             <div className="h-8 w-1 bg-primary rounded-full"></div>
             <h3 className="text-xl font-bold font-display">Beli Paket Internet</h3>
           </div>
+          
+          <div className="bg-primary/5 rounded-lg p-4 border border-primary/10">
+            <h4 className="font-bold text-sm mb-2 flex items-center gap-2">
+              <Zap className="w-4 h-4 text-primary" />
+              Cara Pembelian Voucher Online:
+            </h4>
+            <ol className="list-decimal list-inside text-xs text-muted-foreground space-y-1">
+              <li>Klik paket voucher yang anda beli</li>
+              <li>Masukan nomor WhatsApp untuk dapatkan kode vouchernya</li>
+              <li>Bayar via E-Wallet (QRIS/Dana/OVO/GoPay)</li>
+            </ol>
+          </div>
 
           <div className="space-y-4">
             {PACKAGES.map((pkg) => (
