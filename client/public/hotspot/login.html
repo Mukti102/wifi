@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiberasinet - Hotspot Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <div class="brand">
+            <img src="img/logo.png" alt="Fiberasinet Logo" class="logo">
+            <h1>Fiberasinet</h1>
+        </div>
+        
+        <div class="card">
+            <div class="status-box">
+                <p>Silakan login untuk akses internet</p>
+                <p class="error-msg">$(error)</p>
+            </div>
+
+            <form name="login" action="$(link-login-only)" method="post">
+                <input type="hidden" name="dst" value="$(link-orig)">
+                <input type="hidden" name="popup" value="true">
+                
+                <div class="input-group">
+                    <label>Kode Voucher / Username</label>
+                    <input type="text" name="username" placeholder="Masukkan kode voucher" autofocus required>
+                    <input type="hidden" name="password" value="">
+                </div>
+
+                <button type="submit" class="btn-primary">MASUK INTERNET</button>
+            </form>
+
+            <div class="divider">
+                <span>ATAU</span>
+            </div>
+
+            <a href="/checkout" class="btn-outline">BELI VOUCHER ONLINE</a>
+            
+            <div class="help-section">
+                <p>Butuh bantuan?</p>
+                <a href="https://wa.me/6281234567890" class="link-wa">Chat WhatsApp Admin</a>
+            </div>
+        </div>
+
+        <div class="promo-banner">
+            <p>🔥 Promo Hemat: Internetan sekeluarga mulai <strong>Rp150.000/bulan</strong></p>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2024 Fiberasinet Hotspot</p>
+        </footer>
+    </div>
+    
+    <!-- MikroTik specific scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>
