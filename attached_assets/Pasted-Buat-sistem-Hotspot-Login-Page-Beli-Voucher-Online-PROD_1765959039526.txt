@@ -1,0 +1,110 @@
+Buat sistem “Hotspot Login Page + Beli Voucher Online” PRODUKSI dan AMAN dengan arsitektur TERPISAH:
+(1) Login Page MikroTik (frontend statis)
+(2) Backend VPS (Node.js/Express) untuk payment, generate voucher, dan WhatsApp.
+
+========================
+A. LOGIN PAGE (MIKROTIK)
+========================
+Buat folder /hotspot berisi:
+- login.html
+- alogin.html
+- error.html
+- logout.html
+- css/style.css
+- js/app.js
+- img/logo.png
+
+Spesifikasi login page:
+- Login USERNAME SAJA (password kosong)
+- Form standar MikroTik:
+  action="$link-login-only"
+  method="post"
+  input name="username"
+- Brand: Fiberasinet
+- SSID: tebaci.net
+- Tombol:
+  - MASUK INTERNET
+  - BELI VOUCHER ONLINE → redirect ke https://API_DOMAIN/checkout
+  - Bantuan WhatsApp (link WA admin)
+- Banner promo:
+  “Mau hemat internetan sekeluarga mulai dari Rp150.000/bulan”
+- Tema dark, mobile-first, ringan
+- TANPA API key, TANPA logic payment
+
+Output:
+- Folder /hotspot siap di-zip & upload ke MikroTik via Winbox
+
+========================
+B. BACKEND (NODE.JS / EXPRESS – VPS)
+========================
+Buat backend PORTABLE (tidak tergantung Replit), struktur:
+
+- server.js
+- package.json
+- .env.example
+- src/
+  - routes/
+    - checkout.routes.js
+    - payment.routes.js
+  - services/
+    - payment/
+      - payment.interface.js
+      - tripay.provider.js (REAL)
+    - wa/
+      - wa.interface.js
+      - fonnte.provider.js (REAL)
+      - wablas.provider.js (opsional)
+    - mikrotik/
+      - mikrotik.service.js (RouterOS API)
+  - utils/
+    - logger.js
+    - crypto.js
+- README.md
+
+Endpoint backend:
+- GET  /checkout                  (pilih paket + input nomor WA)
+- POST /api/payment/create        (buat transaksi payment)
+- POST /api/payment/callback      (callback payment, verifikasi signature + idempotent)
+- GET  /success?ref=...            (tampilkan voucher + tombol salin)
+
+Fungsi backend:
+- Simpan API key payment & WA di .env
+- Generate voucher ONLINE otomatis saat payment PAID
+- Create hotspot user ke MikroTik:
+  username = kode voucher
+  password = ""
+  profile = sesuai paket
+  limit-uptime = durasi
+- Kirim voucher ke WhatsApp
+- Audit log + rate limit endpoint publik
+
+========================
+C. PAYMENT & WHATSAPP
+========================
+Payment:
+- Tripay (QRIS + VA) sebagai implementasi awal
+- Callback WAJIB:
+  - verifikasi signature/HMAC
+  - validasi amount & reference
+  - IDEMPOTENT (anti dobel callback)
+
+WhatsApp Gateway (Indonesia):
+- Fonnte (REAL)
+- Wablas (opsional)
+- Arsitektur provider-agnostic (bisa ganti tanpa ubah core)
+
+========================
+D. KEAMANAN
+========================
+- API key TIDAK BOLEH di login page
+- HTTPS wajib
+- Rate limit endpoint publik
+- Prefix voucher ONLINE ≠ OFFLINE
+- Voucher OFFLINE (Mikhmon) TIDAK DISENTUH backend
+
+========================
+OUTPUT AKHIR
+========================
+- Login page MikroTik (file statis)
+- Backend Node.js siap di-upload ke VPS
+- README setup VPS, env, webhook, dan testing end-to-end
